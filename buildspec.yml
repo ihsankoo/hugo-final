@@ -6,14 +6,14 @@ environment_variables:
     
 phases:
   install:
-    runtime-versions:
-      docker: 18
-    commands:                                                                 
+    commands:
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay2&
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - cd /tmp
       - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
       - tar -xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
       - mv hugo /usr/bin/hugo
-      - cd - 
+      - cd -
       - rm -rf /tmp/*
   build:
     commands:
