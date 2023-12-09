@@ -1,0 +1,54 @@
+baseURL = "http://hugo-final-project.s3-website-us-east-1.amazonaws.com/" # Public IP of your EC2 instance
+languageCode = "en-us" # Language
+title = "Hugo AWS CD" # Title of your site
+theme = "PaperMod" # The theme you are using
+paginate = 5 # Items per page in lists
+
+[[deployment.targets]]
+name = "awsbucket"
+URL = "s3://hugo-final-project/?region=us-east-1"
+
+# Menu configuration
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+
+# Parameter configuration specific to PaperMod theme
+[params]
+  colorScheme = "dark" # "light" (default), "dark", or "auto"
+
+# Social media configuration
+[social]
+  LinkedIn = "linkedin/in/ihsankoo"
+  GitHub = "github.com/ihsankoo"
+
+# Taxonomies configuration
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# Enables syntax highlighting
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
